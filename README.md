@@ -11,3 +11,4 @@
 -make sql connection
 -make databases
 -make it look good
+-implement calendar and interface to go back and see old schedules
