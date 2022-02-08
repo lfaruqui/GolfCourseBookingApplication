@@ -6,4 +6,5 @@
 -Ability to block off certain tee times
 -Payment proccessing based on rules
 -Ability to store sheets for a certain time and remove after a certain time
-
+-Possibly allow user sign on to get tee times
+-User side and Admin side
