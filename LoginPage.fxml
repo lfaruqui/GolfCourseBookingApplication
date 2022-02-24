@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="462.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="464.0" prefWidth="719.0">
+         <children>
+            <ImageView fitHeight="464.0" fitWidth="858.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Scorecard.gif" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="464.0" prefWidth="719.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="125.0" layoutY="178.0" prefHeight="242.0" prefWidth="477.0" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="37.0" prefWidth="477.0" spacing="5.0">
+                           <children>
+                              <Label prefHeight="0.0" prefWidth="103.0" text="Username:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Schoolbook Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" opacity="0.8" prefHeight="37.0" prefWidth="353.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="477.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="58.0" prefWidth="97.0" text="Password:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Schoolbook Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" opacity="0.8" prefHeight="36.0" prefWidth="357.0" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="122.0" text="Login">
+                           <font>
+                              <Font name="Century Schoolbook Bold Italic" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
