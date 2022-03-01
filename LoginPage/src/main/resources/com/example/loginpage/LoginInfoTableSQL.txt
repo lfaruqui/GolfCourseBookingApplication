@@ -1,0 +1,9 @@
+CREATE TABLE `classproject`.`logininfo` (
+user_username varchar(30) not null,
+user_password varchar(30) not null,
+user_name varchar(30) not null,
+user_email varchar(30) not null,
+primary key(user_username)
+);
+
+insert into logininformation(user_username,user_password,user_name,user_email)values('username','password','name','email');
