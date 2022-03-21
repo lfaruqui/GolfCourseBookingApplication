@@ -1,0 +1,83 @@
+use classproject;
+
+create table teeSheet
+(Clock 		TIME NOT NULL UNIQUE,
+Member_Name 	varchar(30),
+Mem_Present	boolean,
+Mem_Cart 	varchar(2),
+Player1_Name	varchar(30),
+P1_Cart 	varchar(2),
+P1_reference 	varchar(20),
+Player2_Name 	varchar(30),
+P2_Cart 	varchar(2),
+P2_reference 	varchar(20),
+Player3_Name 	varchar(30),
+P3_Cart 	varchar(2),
+P3_reference 	varchar(20),
+Player4_Name 	varchar(30),
+P4_Cart 	varchar(2),
+P4_reference 	varchar(20),
+Caddie  	varchar(20),
+Creator  	varchar(10));
+
+INSERT INTO teeSheet VALUE ('7:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('7:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('7:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('8:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('9:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('10:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('11:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('12:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('13:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('14:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('15:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:10',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:20',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:30',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:40',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('16:50',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+INSERT INTO teeSheet VALUE ('17:00',NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);
+
+
+select * from teeSheet;
