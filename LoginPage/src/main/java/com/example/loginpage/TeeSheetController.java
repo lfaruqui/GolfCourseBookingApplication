@@ -8,44 +8,54 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TeeSheetController {
     @FXML
     private Button addTeeTime;
     @FXML
     private Button submitTeeTime;
+    @FXML
+    private Button viewTeeSheet;
 
     /**
      * Leave expandedTime parameter as empty string to load tee sheet unexpanded
-     * @param date
-     * @param expandedTime
+     * @param date must be in the form of YYYY-MM-DD
+     * @param expandedTime must be in the form HH:MM
      */
-    public void loadTeeSheet(String date, String expandedTime){
+    public static void loadTeeSheet(String date, String expandedTime){
         DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn =  connectDB.getConnection();
+
+        System.out.println("Tee Sheet for " + date);
+        System.out.printf("%-8s", "time");
+        System.out.printf("%-15s", "memberName");
+        System.out.printf("%-15s", "player1Name");
+        System.out.printf("%-15s", "player2Name");
+        System.out.printf("%-15s", "player3Name");
+        System.out.printf("%-15s", "player4Name");
+        System.out.printf("%-15s %n", "caddie");
+
         try {
             Statement statement = cn.createStatement();
-            String selectTeeSheet = "SELECT * FROM classproject.teeSheet";
+            String selectTeeSheet = "SELECT * FROM classproject.teeSheet WHERE _date_=\"" + date + "\"";
             ResultSet queryResult = statement.executeQuery(selectTeeSheet);
+
             while (queryResult.next()) {
-                String time = queryResult.getString(1).substring(0, 5);
+                String time = queryResult.getString("Clock").substring(0, 5);
                 if(Integer.parseInt(time.substring(0,2)) > 12){
                     Integer hour = Integer.parseInt(time.substring(0,2)) - 12;
-                    String formattedTime = hour.toString() + time.substring(2,5);
-                    time = formattedTime;
-                } if(time.substring(0,1).equals("0")){
+                    time = hour + time.substring(2,5);
+
+                } if(time.charAt(0) == '0'){
                     time = time.substring(1,5);
                 }
                 String memberName = queryResult.getString("Member_Name");
@@ -55,6 +65,7 @@ public class TeeSheetController {
                 String player4Name = queryResult.getString("Player4_Name");
                 String caddie = queryResult.getString("Caddie");
 
+                //REPLACE PRINTF WITH JSON OBJECTS AS RETURN TYPE
                 System.out.printf("%-8s", time);
                 System.out.printf("%-15s", memberName);
                 System.out.printf("%-15s", player1Name);
@@ -76,6 +87,7 @@ public class TeeSheetController {
                     String p4Ref = queryResult.getString("P4_reference");
                     String creator = queryResult.getString("Creator");
 
+                    //REPLACE PRINTF WITH JSON OBJECTS AS RETURN TYPE
                     System.out.printf("%-8s", "");
                     System.out.printf("%-15s", "Mem Present: " + memberPres);
                     System.out.printf("%-15s", "P1 Ref: " + p1Ref);
@@ -99,27 +111,52 @@ public class TeeSheetController {
         }
     }
 
-    public void addTeeTime(String time, HashMap<String,String> info){
+    /**
+     * Will update existing tee time with given date and time parameters
+     * This method functions as an add for new tee times as well as edit
+     * and remove where the object TeeTime parameter can be new TeeTime(date,time)
+     * to replace the existing time with a blank row or new information.
+     * @param date is the date of the tee time to be manipulated
+     * @param time is the time of the reservation
+     * @param info is the Data Container that holds all information for the booking
+     */
+    public static void addTeeTime(String date, String time, TeeTime info) {
         DatabaseConnection connectDB = new DatabaseConnection();
-        Connection cn =  connectDB.getConnection();
-        ArrayList<String> queries = new ArrayList<>();
-
-        info.forEach((key,value) -> {
-            queries.add(key + "=\"" + value + "\"");
-        });
-        String[] query = queries.toArray(new String[0]);
-        String entireQuery = Arrays.toString(query);
-        entireQuery = entireQuery.substring(1,entireQuery.length()-1);
-        String updateTeeTime = "UPDATE teeSheet SET " + entireQuery + " WHERE clock=" + "\"" + time + "\"";
+        Connection cn = connectDB.getConnection();
+        String updateTeeTime = "UPDATE teeSheet SET " + info.toString() ;
         try {
             Statement statement = cn.createStatement();
             statement.executeUpdate(updateTeeTime);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
+
+    /**
+     * Will create a blank tee sheet with tee times from
+     * 7:30 am to 4:50 pm by adding rows to the database table
+     * 'teeSheet'
+     *
+     * @param date must be in the form of YYYY-MM-DD
+     */
+    public static void createBlankTeeSheet(String date) {
+        DatabaseConnection connectDB = new DatabaseConnection();
+        Connection cn = connectDB.getConnection();
+        try {
+            for (int i = 7; i < 17; i++){
+                for (int j = 0; j < 6; j++) {
+                    if(i == 7 && j == 0){j = 3;}
+                    Statement statement = cn.createStatement();
+                    String time = i + ":" + j + "0";
+                    String insertTime = "INSERT INTO classproject.teeSheet VALUES " + "('" + date + "','" + time + "'," +
+                            "FALSE,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);";
+                    statement.execute(insertTime);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
 
 }
