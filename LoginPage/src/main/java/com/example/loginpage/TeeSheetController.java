@@ -158,5 +158,24 @@ public class TeeSheetController {
         }
     }
 
+    /**
+     * Similar to how addTeeTime works
+     * Haven't tested it yet so will test later
+     * @param date is the date of the tee time to be manipulated
+     * @param time is the time of the reservation
+     * @param info is the Data Container that holds all information for the booking
+     */
+    public static void blockTime(String date, String time, TeeTime block, TeeTime info){
+        DatabaseConnection connectDB = new DatabaseConnection();
+        Connection cn = connectDB.getConnection();
+        String updateTeeTime = "UPDATE teeSheet SET " + info.toString() ;
+        block.setBlocked(true);
+        try {
+            Statement statement = cn.createStatement();
+            statement.executeUpdate(updateTeeTime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
 }
