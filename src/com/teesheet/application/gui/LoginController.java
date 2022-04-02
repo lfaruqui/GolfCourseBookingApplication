@@ -32,6 +32,7 @@ public class LoginController {
     @FXML
     private Button addNewUserButton;
     @FXML
+   
 
 
     private Stage stage;
@@ -52,10 +53,18 @@ public class LoginController {
             errorMessageLabel.setText("Enter your username and password");
         }
         else if(!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()) {
-            validateLogin();
+            validateLogin(e);
         }
     }
-    public void validateLogin(){
+    public void loadDashboard(ActionEvent event) throws IOException {
+        Parent root =  FXMLLoader.load(getClass().getResource("fxml/Dashboard.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    public void validateLogin(ActionEvent event){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB =  connectNow.getConnection();
 
@@ -69,6 +78,7 @@ public class LoginController {
             while(queryResult.next()){
                 if(queryResult.getInt(1) == 1){
                     errorMessageLabel.setText("Login Success!");
+                    loadDashboard(event);
                 }
                 else{
                     errorMessageLabel.setText("Invalid Username or Password!");
