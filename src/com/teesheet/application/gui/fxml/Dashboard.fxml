@@ -13,7 +13,7 @@
                <children>
                   <ScrollPane fitToHeight="true" minHeight="110.0" prefHeight="110.0" prefWidth="721.0" VBox.vgrow="NEVER">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="84.0" prefWidth="2000.0" stylesheets="@css-tests/dates.css">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="84.0" prefWidth="2000.0" stylesheets="@css/dates.css">
                            <children>
                               <GridPane fx:id="dates" hgap="2.0" onMouseClicked="#switchDay" prefHeight="90.0" prefWidth="305.0" stylesheets="@css/dates.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -122,7 +122,7 @@
                      <children>
                         <ScrollPane fitToWidth="true" prefHeight="447.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <AnchorPane id="timesPane" minHeight="0.0" minWidth="0.0" prefHeight="838.0" prefWidth="723.0" stylesheets="@css-tests/titledpane.css">
+                            <AnchorPane id="timesPane" minHeight="0.0" minWidth="0.0" prefHeight="838.0" prefWidth="723.0" stylesheets="@css/titledpane.css">
                                  <children>
                                     <Accordion fx:id="hours" prefHeight="570.0" prefWidth="401.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <panes>

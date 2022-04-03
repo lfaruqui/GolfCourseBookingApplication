@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.teesheet.application.utility.DatabaseConnection;
+import com.teesheet.testing.Main;
 
 
 public class LoginController {
@@ -32,7 +33,6 @@ public class LoginController {
     @FXML
     private Button addNewUserButton;
     @FXML
-   
 
 
     private Stage stage;
@@ -56,15 +56,7 @@ public class LoginController {
             validateLogin(e);
         }
     }
-    public void loadDashboard(ActionEvent event) throws IOException {
-        Parent root =  FXMLLoader.load(getClass().getResource("fxml/Dashboard.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    public void validateLogin(ActionEvent event){
+    public void validateLogin(ActionEvent e){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB =  connectNow.getConnection();
 
@@ -77,16 +69,30 @@ public class LoginController {
 
             while(queryResult.next()){
                 if(queryResult.getInt(1) == 1){
-                    errorMessageLabel.setText("Login Success!");
-                    loadDashboard(event);
+//                    errorMessageLabel.setText("Login Success!");
+//                    Parent root =  FXMLLoader.load(getClass().getResource("fxml/AddUser.fxml"));
+//                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//                    scene = new Scene(root);
+//                    stage.setScene(scene);
+//                    stage.show();
+                    
+            		FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("fxml/Navigation.fxml"));
+                    scene = new Scene(fxmlLoader.load(), 900, 550);
+                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    stage.setResizable(true);
+                    stage.setTitle("Tee Sheet");
+                    stage.setMinHeight(550);
+                    stage.setMinWidth(900);
+                    stage.setScene(scene);
+                    stage.show();
                 }
                 else{
                     errorMessageLabel.setText("Invalid Username or Password!");
                 }
             }
         }
-        catch(Exception e){
-            e.printStackTrace();
+        catch(Exception ex){
+            ex.printStackTrace();
         }
     }
 

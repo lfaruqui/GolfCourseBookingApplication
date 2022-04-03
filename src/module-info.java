@@ -4,7 +4,6 @@ module Test {
     requires javafx.fxml;
     requires java.sql;
 	requires javafx.graphics;
-	requires mysql.connector.java;
 
 //    requires org.controlsfx.controls;
 //    requires com.dlsc.formsfx;

@@ -18,6 +18,7 @@ public class FxmlLoader {
 		try {
 			
 			node = FXMLLoader.load(FxmlLoader.class.getResource(fileName));
+			System.out.println("LOADED");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
