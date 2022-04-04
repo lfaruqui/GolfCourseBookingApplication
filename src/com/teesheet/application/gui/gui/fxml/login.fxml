@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.LoginController">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="61.0" prefHeight="33.0" prefWidth="285.0" text="Secure Login" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="125.0" text="Username" />
+            <Label layoutX="23.0" layoutY="191.0" text="Password" />
+            <TextField fx:id="usernameTextField" layoutX="94.0" layoutY="121.0" promptText="Username" />
+            <PasswordField fx:id="passwordPasswordField" layoutX="94.0" layoutY="188.0" promptText="Password" />
+            <Button fx:id="loginButton" layoutX="50.0" layoutY="269.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="25.0" prefWidth="193.0" text="Login" />
+            <Label fx:id="errorMessageLabel" alignment="CENTER" layoutY="236.0" prefHeight="17.0" prefWidth="285.0" textAlignment="CENTER" textFill="#f40303" />
+            <Button fx:id="addNewUserButton" layoutX="50.0" layoutY="333.0" mnemonicParsing="false" onAction="#addNewUserPage" prefHeight="25.0" prefWidth="193.0" text="Add New User" />
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <ImageView fitHeight="405.0" fitWidth="235.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@images/Capture.PNG" />
+         </image>
+      </ImageView>
+   </left>
+</BorderPane>
