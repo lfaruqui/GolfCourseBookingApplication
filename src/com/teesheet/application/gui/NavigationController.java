@@ -47,8 +47,8 @@ public class NavigationController {
 		HBox parent = (HBox)reference.getParent();
 		parent.getChildren().remove(reference);
 		
-		FxmlLoader loader = new FxmlLoader();
-		reference = (VBox) loader.loadPage("Dashboard.fxml");
+		FxmlLoader loader = new FxmlLoader("Dashboard.fxml");
+		reference = (VBox) loader.loadPage();
 		
 		parent.getChildren().add(reference);
 		

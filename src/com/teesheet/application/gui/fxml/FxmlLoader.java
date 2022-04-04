@@ -13,12 +13,22 @@ public class FxmlLoader {
 	
 	private Node node;
 	
-	public Node loadPage(String fileName) {
+	private FXMLLoader loader;
+	
+	public FxmlLoader(String fileName) {
+		loader = new FXMLLoader(FxmlLoader.class.getResource(fileName));
+	}
+	
+	public FXMLLoader getLoader() {
+		return loader;
+	}
+	
+	public Node loadPage() {
 		
 		try {
 			
-			node = FXMLLoader.load(FxmlLoader.class.getResource(fileName));
-			System.out.println("LOADED");
+			node = loader.load();
+//			System.out.println("LOADED");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

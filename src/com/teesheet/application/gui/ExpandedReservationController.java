@@ -1,5 +1,10 @@
 package com.teesheet.application.gui;
 
+import java.util.ArrayList;
+
+import com.teesheet.application.utility.JSON.JSONObject;
+
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -49,9 +54,11 @@ public class ExpandedReservationController {
 	@FXML
 	private TextArea notes;
 	
-	
+	private JSONObject teeTime;
 	
 	private TitledPane titledParent;
+	
+	private String date;
 	
 	public void submitReservation(ActionEvent e) {
 		
@@ -67,6 +74,31 @@ public class ExpandedReservationController {
 		System.out.println(titledParent);
 	}
 	
+	public void setTeeTime(JSONObject json) {
+		teeTime = json;
+		
+		JSONObject info = teeTime.optJSONObject("info");
+		
+		member.setText(info.optString("member_name"));
+		
+		player1.setText(info.optString("player1_name"));
+		
+		player2.setText(info.optString("player2_name"));
+		player3.setText(info.optString("player3_name"));
+		player4.setText(info.optString("player4_name"));
+		caddie.setText(info.optString("caddie"));
+		
+		memberPresent.setSelected(info.optBoolean("mem_present"));
+		
+		carts.getSelectionModel().select(carts.getItems().indexOf(info.optString("p3_cart")));
+
+		
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	public void initialize() {
 		
 		/* the parent structure of the button is as follows:
@@ -75,7 +107,14 @@ public class ExpandedReservationController {
 		 */
 		
 //		titledParent = (TitledPane) submit.getParent().getParent().getParent().getParent().getParent();
-		System.out.println(submit.getParent().getParent().getParent().getParent());
+//		System.out.println(submit.getParent().getParent().getParent().getParent());
+		ArrayList<String> cartID = new ArrayList<String>();
+		
+		for (int i = 1; i < 10; i++) {
+			cartID.add("C" + i);
+		}
+		
+		carts.setItems(FXCollections.observableArrayList(cartID));
 		
 	}
 
