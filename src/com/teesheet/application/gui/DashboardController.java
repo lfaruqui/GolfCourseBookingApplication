@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import com.teesheet.application.gui.fxml.FxmlLoader;
 import com.teesheet.testing.date.DateAndTime;
 
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 /**
  * @author Jayden Craft
@@ -32,6 +34,11 @@ public class DashboardController {
 	private Accordion hours;
 
 	private int chosenColumn = 0;
+	
+	private String date = "";
+	
+	@FXML
+	
 
 	public void switchDay(MouseEvent e) {
 
@@ -57,21 +64,23 @@ public class DashboardController {
 		// Get the date String from the selected tab
 		String[] dateDay = day.getText().split("\n");
 		String date = dateDay[1];
-		System.out.println(dateDay[1]);
+//		System.out.println(dateDay[1]);
 
 		LocalDate d = LocalDate.parse(date, DateTimeFormatter.ofPattern("M/dd/yy"));
-		LocalTime time = LocalTime.of(7, 0);
-		
-		LocalDateTime dt = LocalDateTime.of(d, time);
+		this.date = d.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		System.out.println(this.date);
+//		LocalTime time = LocalTime.of(7, 0);
+//		
+//		LocalDateTime dt = LocalDateTime.of(d, time);
 
-		for (TitledPane t : hours.getPanes()) {
-
-			// Get the label in the title of the TitlePane
-			Label label = (Label) t.getGraphic();
-
-			label.setText(dt.format(DateTimeFormatter.ofPattern("hh:mm a")));
-			dt = dt.plusMinutes(15);
-		}
+//		for (TitledPane t : hours.getPanes()) {
+//
+//			// Get the label in the title of the TitlePane
+//			Label label = (Label) t.getGraphic();
+//
+//			label.setText(dt.format(DateTimeFormatter.ofPattern("hh:mm a")));
+//			dt = dt.plusMinutes(10);
+//		}
 
 	}
 
@@ -82,6 +91,7 @@ public class DashboardController {
 	public void initialize() {
 		DateAndTime dt = new DateAndTime();
 		ArrayList<LocalDateTime> text = dt.getRangeOfDates(LocalDateTime.now(), 14);
+		date = text.get(0).format(DateTimeFormatter.ofPattern("M-dd-yy"));
 		int index = 0;
 
 		for (Node n : dates.getChildren()) {
@@ -91,6 +101,22 @@ public class DashboardController {
 					+ text.get(index).format(DateTimeFormatter.ofPattern("M/dd/yy")));
 			index++;
 		}
+		
+		
+		LocalTime time = LocalTime.of(7, 0);
+		for (TitledPane t : hours.getPanes()) {
+
+			// Get the label in the title of the TitlePane
+			Label label = (Label) t.getGraphic();
+
+			label.setText(time.format(DateTimeFormatter.ofPattern("hh:mm a")));
+			time = time.plusMinutes(10);
+			
+			FxmlLoader loader = new FxmlLoader();
+			t.setContent(loader.loadPage("ExpandedReservationPane.fxml"));
+		}
+		
+		
 
 	}
 

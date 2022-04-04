@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="282.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.ExpandedReservationController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="173.0" prefWidth="822.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label layoutX="76.0" layoutY="52.0" text="Member: " AnchorPane.topAnchor="52.0" />
+                  <Label layoutX="527.0" layoutY="52.0" text="Player 2: " AnchorPane.topAnchor="52.0" />
+                  <Label layoutX="169.0" layoutY="114.0" text="Player 3: " AnchorPane.topAnchor="114.0" />
+                  <Label layoutX="437.0" layoutY="114.0" text="Player 4: " AnchorPane.topAnchor="114.0" />
+                  <Label layoutX="306.0" layoutY="52.0" text="Player 1: " AnchorPane.topAnchor="52.0" />
+                  <TextField fx:id="member" layoutX="137.0" layoutY="48.0" AnchorPane.topAnchor="48.0" />
+                  <TextField fx:id="player1" layoutX="363.0" layoutY="48.0" AnchorPane.topAnchor="48.0" />
+                  <TextField fx:id="player4" layoutX="508.0" layoutY="110.0" AnchorPane.topAnchor="110.0" />
+                  <TextField fx:id="player3" layoutX="243.0" layoutY="110.0" AnchorPane.topAnchor="110.0" />
+                  <TextField fx:id="player2" layoutX="583.0" layoutY="48.0" AnchorPane.topAnchor="48.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="195.0" prefWidth="825.0" VBox.vgrow="NEVER">
+               <children>
+                  <CheckBox fx:id="memberPresent" layoutX="64.0" layoutY="53.0" mnemonicParsing="false" text="Member Present" AnchorPane.topAnchor="27.0" />
+                  <CheckBox fx:id="driving" layoutX="214.0" layoutY="53.0" mnemonicParsing="false" text="Driving" AnchorPane.topAnchor="27.0" />
+                  <Label layoutX="315.0" layoutY="53.0" text="Caddie: " AnchorPane.topAnchor="27.0" />
+                  <Label layoutX="546.0" layoutY="53.0" text="Notes: " AnchorPane.topAnchor="27.0" />
+                  <TextField fx:id="caddie" layoutX="369.0" layoutY="23.0" AnchorPane.topAnchor="23.0" />
+                  <TextArea fx:id="notes" layoutX="598.0" layoutY="14.0" prefHeight="60.0" prefWidth="219.0" AnchorPane.bottomAnchor="73.0" AnchorPane.topAnchor="14.0" />
+                  <ComboBox fx:id="carts" layoutX="224.0" layoutY="57.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.topAnchor="57.0" />
+                  <Label layoutX="186.0" layoutY="94.0" text="Cart: " AnchorPane.topAnchor="61.0" />
+                  <Button fx:id="submit" layoutX="660.0" layoutY="91.0" mnemonicParsing="false" onAction="#submitReservation" prefHeight="32.0" prefWidth="96.0" text="Submit" AnchorPane.bottomAnchor="24.0" AnchorPane.topAnchor="91.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

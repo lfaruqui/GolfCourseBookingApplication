@@ -77,12 +77,12 @@ public class LoginController {
 //                    stage.show();
                     
             		FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("fxml/Navigation.fxml"));
-                    scene = new Scene(fxmlLoader.load(), 900, 550);
+                    scene = new Scene(fxmlLoader.load(), 1150, 650);
                     stage = (Stage)((Node)e.getSource()).getScene().getWindow();
                     stage.setResizable(true);
                     stage.setTitle("Tee Sheet");
-                    stage.setMinHeight(550);
-                    stage.setMinWidth(900);
+                    stage.setMinHeight(650);
+                    stage.setMinWidth(1150);
                     stage.setScene(scene);
                     stage.show();
                 }
