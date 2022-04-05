@@ -5,12 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.teesheet.application.gui.fxml.FxmlLoader;
-import com.teesheet.application.utility.TeeSheetUtility;
-import com.teesheet.application.utility.JSON.JSONArray;
-import com.teesheet.application.utility.JSON.JSONObject;
 import com.teesheet.testing.date.DateAndTime;
 
 import javafx.fxml.FXML;
@@ -26,10 +22,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
- * @author Jayden Craft Mar 31, 2022
+ * @author Jayden Craft
+ * Mar 31, 2022
  */
 public class DashboardController {
-
+	
 	@FXML
 	private GridPane dates;
 
@@ -37,12 +34,11 @@ public class DashboardController {
 	private Accordion hours;
 
 	private int chosenColumn = 0;
-
+	
 	private String date = "";
-
-	private JSONObject teesheet;
-
-	private HashMap<TitledPane, ExpandedReservationController> controllers;
+	
+	@FXML
+	
 
 	public void switchDay(MouseEvent e) {
 
@@ -67,44 +63,24 @@ public class DashboardController {
 
 		// Get the date String from the selected tab
 		String[] dateDay = day.getText().split("\n");
+		String date = dateDay[1];
 //		System.out.println(dateDay[1]);
 
-		LocalDate d = LocalDate.parse(dateDay[1], DateTimeFormatter.ofPattern("M/dd/yy"));
-
+		LocalDate d = LocalDate.parse(date, DateTimeFormatter.ofPattern("M/dd/yy"));
 		this.date = d.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		System.out.println(this.date);
+//		LocalTime time = LocalTime.of(7, 0);
+//		
+//		LocalDateTime dt = LocalDateTime.of(d, time);
 
-		teesheet = TeeSheetUtility.singleDayTeeSheet(date);
-
-		int index = 0;
-
-		for (TitledPane t : hours.getPanes()) {
-			loadTeeSheet(t, index);
-
-			index++;
-		}
-
-//		System.out.println(teesheet);
-
-	}
-
-	private void loadTeeSheet(TitledPane t, int index) {
-
-		// Get the label in the title of the TitlePane
-		Label label = (Label) t.getGraphic();
-
-		JSONArray teeTimes = teesheet.optJSONArray("tee_Times");
-//			System.out.println(hours.getChildrenUnmodifiable().indexOf(t));
-		JSONObject singleTeeTime = teeTimes.optJSONObject(index);
-//			System.out.println(s);
-		JSONObject info = singleTeeTime.optJSONObject("info");
-		LocalTime time = LocalTime.parse(singleTeeTime.optString("time"), DateTimeFormatter.ofPattern("HH:mm:ss"));
-		label.setText(time.format(DateTimeFormatter.ofPattern("h:mm a")) + "  Member: " + info.optString("member_name"));
-
-		ExpandedReservationController rc = controllers.get(t);
-
-		rc.setTeeTime(singleTeeTime);
-
-//			label.setText( + "");
+//		for (TitledPane t : hours.getPanes()) {
+//
+//			// Get the label in the title of the TitlePane
+//			Label label = (Label) t.getGraphic();
+//
+//			label.setText(dt.format(DateTimeFormatter.ofPattern("hh:mm a")));
+//			dt = dt.plusMinutes(10);
+//		}
 
 	}
 
@@ -115,10 +91,7 @@ public class DashboardController {
 	public void initialize() {
 		DateAndTime dt = new DateAndTime();
 		ArrayList<LocalDateTime> text = dt.getRangeOfDates(LocalDateTime.now(), 14);
-		date = text.get(0).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-		teesheet = TeeSheetUtility.singleDayTeeSheet(date);
-
+		date = text.get(0).format(DateTimeFormatter.ofPattern("M-dd-yy"));
 		int index = 0;
 
 		for (Node n : dates.getChildren()) {
@@ -128,12 +101,9 @@ public class DashboardController {
 					+ text.get(index).format(DateTimeFormatter.ofPattern("M/dd/yy")));
 			index++;
 		}
-
-		index = 0;
+		
+		
 		LocalTime time = LocalTime.of(7, 0);
-
-		controllers = new HashMap<TitledPane, ExpandedReservationController>();
-
 		for (TitledPane t : hours.getPanes()) {
 
 			// Get the label in the title of the TitlePane
@@ -141,19 +111,14 @@ public class DashboardController {
 
 			label.setText(time.format(DateTimeFormatter.ofPattern("hh:mm a")));
 			time = time.plusMinutes(10);
-
-			FxmlLoader loader = new FxmlLoader("ExpandedReservationPane.fxml");
-			t.setContent(loader.loadPage());
-
-			ExpandedReservationController rc = loader.getLoader().getController();
-
-			controllers.put(t, rc);
-
-			loadTeeSheet(t, index);
-
-			index++;
+			
+			FxmlLoader loader = new FxmlLoader();
+			t.setContent(loader.loadPage("ExpandedReservationPane.fxml"));
 		}
+		
+		
 
 	}
+
 
 }
