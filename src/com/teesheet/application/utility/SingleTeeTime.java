@@ -182,6 +182,17 @@ public class SingleTeeTime {
 		private String p4_reference;
 		private String caddie;
 		private String creator;
+		
+		@Override
+		public String toString() {	
+			return  "Member_Name=\"" + "\",mem_present=\"" + mem_present + "\",mem_cart=\"" + mem_cart + "\"," +
+	                "Player1_Name=\"" + player1_name + "\", p1_cart=\"" + p1_cart + "\",p1_reference=\"" + p1_reference + "\"," +
+	                "Player2_Name=\"" + player2_name + "\", p2_cart=\"" + p2_cart + "\",p2_reference=\"" + p2_reference + "\","+
+	                "Player3_Name=\"" + player3_name + "\", p3_cart=\"" + p3_cart + "\",p3_reference=\"" + p3_reference + "\","+
+	                "Player4_Name=\"" + player4_name + "\", p4_cart=\"" + p4_cart + "\",p4_reference=\"" + p4_reference + "\","+
+	                "Caddie=\"" + caddie + "\",Creator=\"" + creator + "\" WHERE clock=\"" + time + "\"";
+		}
+
 
 		public Info(boolean blocked, String member_name, boolean mem_present, String mem_cart, String player1_name,
 				String p1_cart, String p1_reference, String player2_name, String p2_cart, String p2_reference,
@@ -210,7 +221,7 @@ public class SingleTeeTime {
 		}
 
 	}
-
+	
 	public String getTime() {
 		return time;
 	}
