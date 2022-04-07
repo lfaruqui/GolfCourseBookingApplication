@@ -185,7 +185,17 @@ public class SingleTeeTime {
 		
 		@Override
 		public String toString() {	
-			return  "Member_Name=\"" + "\",mem_present=\"" + mem_present + "\",mem_cart=\"" + mem_cart + "\"," +
+			int blockedInt = 0;
+			int memPresInt = 0;
+			if(blocked) {
+				blockedInt = 1;
+			}
+			if(mem_present) {
+				memPresInt = 1;
+			}
+			
+			
+			return  "blocked= \"" + blockedInt +  "\" Member_Name=\"" + "\",mem_present=\"" + memPresInt + "\",mem_cart=\"" + mem_cart + "\"," +
 	                "Player1_Name=\"" + player1_name + "\", p1_cart=\"" + p1_cart + "\",p1_reference=\"" + p1_reference + "\"," +
 	                "Player2_Name=\"" + player2_name + "\", p2_cart=\"" + p2_cart + "\",p2_reference=\"" + p2_reference + "\","+
 	                "Player3_Name=\"" + player3_name + "\", p3_cart=\"" + p3_cart + "\",p3_reference=\"" + p3_reference + "\","+

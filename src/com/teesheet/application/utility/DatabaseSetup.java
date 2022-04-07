@@ -110,7 +110,6 @@ public class DatabaseSetup {
 					}
 					Statement statement = cn.createStatement();
 					String time = i + ":" + j + "0";
-					System.out.println(time);
 					String insertTime = "INSERT INTO classproject.teeSheet VALUES " + "('" + date + "','" + time + "',"
 							+ "FALSE,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null,Null,NULL,NUll,Null,Null,Null);";
 					statement.execute(insertTime);
@@ -118,7 +117,7 @@ public class DatabaseSetup {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.toString());
+			e.printStackTrace();
 		}
 	}
 

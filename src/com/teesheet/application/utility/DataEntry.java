@@ -3,6 +3,9 @@ package com.teesheet.application.utility;
 import java.sql.Connection;
 import java.sql.Statement;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.teesheet.application.utility.JSON.JSONObject;
+
 
 public class DataEntry {
 
@@ -14,11 +17,13 @@ public class DataEntry {
      * @param date is the date of the tee time to be manipulated
      * @param SingleTeeTime is the Data Container that holds all information for the booking
      */
-    public static void updateTeeTime(String date, SingleTeeTime st) {
+    public static void updateTeeTime(String date, JSONObject json) {
         DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn = connectDB.getConnection();
-        String updateTeeTime = "UPDATE teeSheet SET " + st.getInfo().toString() + " AND _date=\"" + date +"\"";
+        ObjectMapper mapper = new ObjectMapper();
         try {
+        	SingleTeeTime st = mapper.readValue(json.toString(), SingleTeeTime.class);
+        	String updateTeeTime = "UPDATE teeSheet SET " + st.getInfo().toString() + " AND _date_=\"" + date +"\"";
             Statement statement = cn.createStatement();
             statement.executeUpdate(updateTeeTime);
         } catch (Exception e) {
