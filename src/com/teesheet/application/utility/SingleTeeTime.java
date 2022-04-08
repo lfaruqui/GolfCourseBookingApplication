@@ -4,7 +4,6 @@ package com.teesheet.application.utility;
  * @author Jayden Craft Apr 4, 2022
  */
 public class SingleTeeTime {
-
 	private String time;
 	private Info info;
 
@@ -195,7 +194,7 @@ public class SingleTeeTime {
 			}
 			
 			
-			return  "blocked= \"" + blockedInt +  "\" Member_Name=\"" + "\",mem_present=\"" + memPresInt + "\",mem_cart=\"" + mem_cart + "\"," +
+			return  "blocked=\"" + blockedInt +  "\" ,Member_Name=\"" + member_name + "\",mem_present=\"" + memPresInt + "\",mem_cart=\"" + mem_cart + "\"," +
 	                "Player1_Name=\"" + player1_name + "\", p1_cart=\"" + p1_cart + "\",p1_reference=\"" + p1_reference + "\"," +
 	                "Player2_Name=\"" + player2_name + "\", p2_cart=\"" + p2_cart + "\",p2_reference=\"" + p2_reference + "\","+
 	                "Player3_Name=\"" + player3_name + "\", p3_cart=\"" + p3_cart + "\",p3_reference=\"" + p3_reference + "\","+
