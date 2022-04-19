@@ -1,13 +1,13 @@
 package com.teesheet.application.utility;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.teesheet.application.utility.JSON.JSONObject;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.teesheet.application.utility.JSON.JSONObject;
 
 
 public class TeeSheetUtility {
@@ -110,31 +110,79 @@ public class TeeSheetUtility {
 					creator);
 			return t;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return null;
-
 	}
 	
+	public static int getRoundsCount(String date) {
+		int count = 0;
+		DatabaseConnection connectDB = new DatabaseConnection();
+		Connection cn = connectDB.getConnection();
 
-//	public static void main(String[] args) throws JsonProcessingException {
-//
-//		JsonArray rs = TeeSheetUtility.loadTeeSheet("2022-04-03", "");
-//		
-//		SingleDayTeeSheet t = TeeSheetUtility.loadSingleDayTeeSheet("2022-04-04");
-//
-////		SingleTeeTime t = TeeSheetUtility.loadSingleTeeTime("2022-04-04", "7:30");
-//////		System.out.println(t);
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//
-//		String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(t);
-//		JSONObject json = new JSONObject(jsonString);
-////		System.out.println(json);
-//		System.out.println(jsonString);
-//
-//	}
+		try {
+			Statement statement = cn.createStatement();
 
+			String selectTeeSheet = "SELECT * FROM classproject.teeSheet WHERE _date_ =\"" + date + "\"";
+			ResultSet queryResult = statement.executeQuery(selectTeeSheet);
+			while(queryResult.next()) {
+				if(queryResult.getObject("Member_Name")!= null && queryResult.getObject("Mem_present").toString() == "1") {
+					count++;
+				}
+				if(queryResult.getObject("Player1_name")!= null) {
+					count++;
+				}
+				if(queryResult.getObject("Player2_name")!= null) {
+					count++;
+				}
+				if(queryResult.getObject("Player3_name")!= null) {
+					count++;
+				}
+				if(queryResult.getObject("Player4_name")!= null) {
+					count++;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public static int getWalkingCount(String date) {
+		int count = 0;
+		DatabaseConnection connectDB = new DatabaseConnection();
+		Connection cn = connectDB.getConnection();
+		try {
+			Statement statement = cn.createStatement();
+			String selectTeeSheet = "SELECT * FROM classproject.teeSheet WHERE _date_ =\"" + date + "\"";
+			ResultSet queryResult = statement.executeQuery(selectTeeSheet);
+			while(queryResult.next()) {
+				if(queryResult.getObject("Member_Name")!= null && queryResult.getObject("Mem_present").toString() == "1" && 
+						queryResult.getObject("Mem_Cart").toString().toUpperCase() == "W") {
+					count++;
+				}
+				if(queryResult.getObject("Player1_Cart").toString().toUpperCase() == "W") {
+					count++;
+				}
+				if(queryResult.getObject("Player2_name").toString().toUpperCase() == "W") {
+					count++;
+				}
+				if(queryResult.getObject("Player3_name").toString().toUpperCase() == "W") {
+					count++;
+				}
+				if(queryResult.getObject("Player4_name").toString().toUpperCase() == "W") {
+					count++;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public static int getCartCount(String date) {
+		return getRoundsCount(date) - getWalkingCount(date);
+	}
+	
 }
