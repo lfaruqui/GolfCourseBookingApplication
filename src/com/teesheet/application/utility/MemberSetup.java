@@ -1,8 +1,5 @@
 package com.teesheet.application.utility;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +19,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teesheet.application.utility.DatabaseConnection;
+import com.teesheet.application.utility.JSON.JSONObject;
 
 
 
@@ -102,5 +102,70 @@ public class MemberSetup {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Takes information from result set and creates a Member object 
+     * using the information given. Used in loadMemberList method.
+     * @param rs
+     * @return
+     */
+    public static Member getMemberInfo(ResultSet rs) {
+    	Member m = null;
+    	try {
+    		String memberID = rs.getString("member_ID");
+    		String name = rs.getString("name");
+    		String phone = rs.getString("phone");
+    		m = new Member(memberID, name, phone);
+    		return m;
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return m;
+    }
 
+    
+    /**
+     *Populates MemberList using loadMemberList method for latest
+     *info from database
+     *
+     * @return  JSONObject of MemberList
+     */
+    public static JSONObject getMemberList() {
+    	MemberList list = loadMemberList();
+    	ObjectMapper mapper = new ObjectMapper();
+    	String jsonString;
+    	try {
+    		jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
+    		JSONObject json = new JSONObject(jsonString);
+    		return json;
+    	} catch (JsonProcessingException e) {
+    		e.printStackTrace();
+    	}
+    	return null;
+    }
+    
+    /**
+     * Uses method getMemberInfo to add each Member to MemberList
+     * 
+     * @return MemberList object populated with info from DB
+     */
+    public static MemberList loadMemberList() {
+    	MemberList list = new MemberList();
+    	DatabaseConnection connectDB = new DatabaseConnection();
+    	Connection cn = connectDB.getConnection();
+    	try {
+    		Statement statement = cn.createStatement();
+    		String selectEntireMemberList = "SELECT * FROM classproject.memberInfo";
+    		ResultSet queryResult = statement.executeQuery(selectEntireMemberList);
+
+    		while (queryResult.next()) {
+    			list.addMember(getMemberInfo(queryResult));
+    		}
+  
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return list;
+    }
 }
