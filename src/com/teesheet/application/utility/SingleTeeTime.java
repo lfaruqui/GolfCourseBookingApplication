@@ -192,16 +192,53 @@ public class SingleTeeTime {
 			if(mem_present) {
 				memPresInt = 1;
 			}
-			
-			
-			return  "blocked=\"" + blockedInt +  "\" ,Member_Name=\"" + member_name + "\",mem_present=\"" + memPresInt + "\",mem_cart=\"" + mem_cart + "\"," +
-	                "Player1_Name=\"" + player1_name + "\", p1_cart=\"" + p1_cart + "\",p1_reference=\"" + p1_reference + "\"," +
-	                "Player2_Name=\"" + player2_name + "\", p2_cart=\"" + p2_cart + "\",p2_reference=\"" + p2_reference + "\","+
-	                "Player3_Name=\"" + player3_name + "\", p3_cart=\"" + p3_cart + "\",p3_reference=\"" + p3_reference + "\","+
-	                "Player4_Name=\"" + player4_name + "\", p4_cart=\"" + p4_cart + "\",p4_reference=\"" + p4_reference + "\","+
-	                "Caddie=\"" + caddie + "\",Creator=\"" + creator + "\" WHERE clock=\"" + time + "\"";
+			formatSqlSyntax();
+			return  "blocked=" + blockedInt +  " ,Member_Name=" + member_name + ",mem_present=" + memPresInt + ",mem_cart=" + mem_cart + "," +
+	                "Player1_Name=" + player1_name + ", p1_cart=" + p1_cart + ",p1_reference=" + p1_reference +
+	                ",Player2_Name=" + player2_name + ", p2_cart=" + p2_cart + ",p2_reference=" + p2_reference + 
+	                ",Player3_Name=" + player3_name + ", p3_cart=" + p3_cart + ",p3_reference=" + p3_reference +
+	                ",Player4_Name=" + player4_name + ", p4_cart=" + p4_cart + ",p4_reference=" + p4_reference + 
+	                ",Caddie=" + caddie + ",Creator=" + creator + " WHERE clock=\'" + time + "\'";
 		}
 
+		public void formatSqlSyntax() {
+			if(member_name != null) {
+				member_name = "\'" + member_name + "\'";
+			}
+			if(player1_name != null) {
+				player1_name = "\'" + player1_name + "\'";
+			}
+			if(player2_name != null) {
+				player2_name = "\'" + player2_name + "\'";
+			}
+			if(player3_name != null) {
+				player3_name = "\'" + player3_name + "\'";
+			}
+			if(player4_name != null) {
+				player4_name = "\'" + player4_name + "\'";
+			}
+			if(mem_cart != null) {
+				mem_cart = "\'" + mem_cart + "\'";
+			}
+			if(p1_cart != null) {
+				p1_cart = "\'" + p1_cart + "\'";
+			}
+			if(p2_cart != null) {
+				p2_cart = "\'" + p2_cart + "\'";
+			}
+			if(p3_cart != null) {
+				p3_cart = "\'" + p3_cart + "\'";
+			}
+			if(p4_cart != null) {
+				p4_cart = "\'" + p4_cart + "\'";
+			}
+			if(caddie != null) {
+				caddie = "\'" + caddie + "\'";
+			}
+			if(creator != null) {
+				creator = "\'" + creator + "\'";
+			}
+		}
 
 		public Info(boolean blocked, String member_name, boolean mem_present, String mem_cart, String player1_name,
 				String p1_cart, String p1_reference, String player2_name, String p2_cart, String p2_reference,
