@@ -37,6 +37,22 @@ public class MemberSetup {
      * @param adminPassword password for admin initial user
      */
 	
+	public static void removeUser(String id) throws SQLException{
+		DatabaseConnection connectDB = new DatabaseConnection();
+        Connection cn =  connectDB.getConnection();
+        
+		PreparedStatement post = cn.prepareStatement("DELETE from classproject.memberinfo WHERE " +
+                "memberID = (?)");
+        post.setString(1,id);
+        try{
+            post.executeUpdate();
+           
+        }
+        catch(Exception e){
+        }
+		
+		
+	}
 	public static void insertUser(String name, String phone) throws SQLException {
 		DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn =  connectDB.getConnection();
