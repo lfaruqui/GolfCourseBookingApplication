@@ -59,6 +59,7 @@ public class NavigationController {
 		break;
 		case "Blocking": loader = new FxmlLoader("Blocking.fxml");
 		break;
+		case "Members": loader = new FxmlLoader("Members.fxml");
 		}
 		
 //		System.out.println(loader);

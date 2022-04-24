@@ -92,7 +92,7 @@ public class MemberSetup {
         String createTeeSheetTable = "CREATE TABLE `classproject`.`memberinfo` (\r\n"
         		+ "	memberID varchar(10) not null,\r\n"
         		+ "	memberName varchar(30) not null,\r\n"
-        		+ "	phoneNumber varchar(10) not null,\r\n"
+        		+ "	phoneNumber varchar(12) not null,\r\n"
         		+ "	primary key(memberID)\r\n"
         		+ ");";
         try {
@@ -112,9 +112,9 @@ public class MemberSetup {
     public static Member getMemberInfo(ResultSet rs) {
     	Member m = null;
     	try {
-    		String memberID = rs.getString("member_ID");
-    		String name = rs.getString("name");
-    		String phone = rs.getString("phone");
+    		String memberID = rs.getString("memberID");
+    		String name = rs.getString("memberName");
+    		String phone = rs.getString("phoneNumber");
     		m = new Member(memberID, name, phone);
     		return m;
     	}catch(Exception e) {
