@@ -1,14 +1,8 @@
 # SoftwareEngineeringProject
--Form to input data
--Admin sign on
--Printable
--Make executable/desktop application
--Ability to block off certain tee times
--Payment proccessing based on rules
--Ability to store sheets for a certain time and remove after a certain time
--Possibly allow user sign on to get tee times
--User side and Admin side
--make sql connection
--make databases
--make it look good
--implement calendar and interface to go back and see old schedules
+This electronic tee sheet application allows you to be able to schedule times for your players, able to block certain times and days, and keep track of all your members.
+
+Authors: Hamed Faruqui
+         Andy Vuong
+         Dominic Verrichia
+         Jayden Craft
+         Frank Hulse
