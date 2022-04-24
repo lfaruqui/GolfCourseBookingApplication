@@ -11,126 +11,38 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="543.0" prefWidth="737.0" stylesheets="@css/blocking.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.BlockingController">
+<VBox prefHeight="543.0" prefWidth="737.0" stylesheets="@css/blocking.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.MembersController">
                <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="2000.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="2000.0" style="-fx-background-color: white;">
          <children>
-            <Label id="title" layoutX="93.0" layoutY="46.0" text="Block Dates" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label id="title" layoutX="93.0" layoutY="46.0" text="Members" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
                   <Pane minHeight="25.0" prefHeight="25.0" prefWidth="721.0" style="-fx-background-color: #235675;" VBox.vgrow="NEVER" />
                   <AnchorPane prefHeight="444.0" prefWidth="721.0" VBox.vgrow="ALWAYS">
-                     <children>
+         <children>
             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="members" prefHeight="426.0" prefWidth="737.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="id" prefWidth="91.0" text="Member ID" />
+                      <TableColumn fx:id="name" prefWidth="258.0" text="Member Name" />
+                        <TableColumn fx:id="phone" prefWidth="387.0" text="Contact Info" />
+                    </columns>
+                  </TableView>
+                  <AnchorPane maxHeight="58.0" minHeight="58.0" minWidth="133.0" prefHeight="58.0" prefWidth="737.0" style="-fx-background-color: white;" VBox.vgrow="NEVER">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="37.0" layoutY="11.0" text="Block a range of Dates">
-                                       <font>
-                                          <Font name="System Bold Italic" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="52.0" layoutY="13.0" text="Start Date: " />
-                                    <Label layoutX="315.0" layoutY="13.0" text="End Date: " />
-                                    <DatePicker fx:id="startDate" layoutX="111.0" layoutY="9.0" />
-                                    <DatePicker fx:id="endDate" layoutX="369.0" layoutY="9.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="rangeButton" layoutX="31.0" layoutY="9.0" mnemonicParsing="false" onAction="#blockRangeOfDates" text="Block Dates" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </VBox>
-                     </children></AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="37.0" layoutY="11.0" text="Block a Single Day">
-                                       <font>
-                                          <Font name="System Bold Italic" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="52.0" layoutY="13.0" text="Block Date: " />
-                                    <DatePicker fx:id="singleDate" layoutX="115.0" layoutY="9.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="singleDateButton" layoutX="31.0" layoutY="9.0" mnemonicParsing="false" onAction="#blockSingleDate" text="Block Dates" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="37.0" layoutY="11.0" text="Block Certain Times on a Given Day">
-                                       <font>
-                                          <Font name="System Bold Italic" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="52.0" layoutY="13.0" text="Block Date: " />
-                                    <Label layoutX="315.0" layoutY="13.0" text="Start Time: " />
-                                    <DatePicker fx:id="timeDate" layoutX="115.0" layoutY="9.0" />
-                                    <TextField fx:id="startTime" layoutX="375.0" layoutY="9.0" prefHeight="25.0" prefWidth="63.0" />
-                                    <ChoiceBox fx:id="startPM" layoutX="446.0" layoutY="9.0" prefHeight="25.0" prefWidth="54.0" />
-                                    <Label layoutX="519.0" layoutY="13.0" text="End Time: " />
-                                    <TextField fx:id="endTime" layoutX="574.0" layoutY="10.0" prefHeight="25.0" prefWidth="63.0" />
-                                    <ChoiceBox fx:id="endPM" layoutX="644.0" layoutY="9.0" prefHeight="25.0" prefWidth="54.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="timesButton" layoutX="31.0" layoutY="9.0" mnemonicParsing="false" onAction="#blockRangeOfTimes" text="Block Dates" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane minHeight="36.0" prefHeight="46.0" prefWidth="737.0" VBox.vgrow="NEVER">
-                     <children>
-                        <Label layoutX="132.0" layoutY="4.0" text="Notice that blocking already blocked dates will unblock them" textFill="#225573">
-                           <font>
-                              <Font name="System Bold Italic" size="19.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="36.0" fitWidth="51.0" layoutX="85.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/Notification.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="addMember" layoutX="499.0" layoutY="17.0" mnemonicParsing="false" onAction="#addMember" prefHeight="25.0" prefWidth="53.0" text="Add" />
+                        <Label layoutX="26.0" layoutY="21.0" text="Name: " />
+                        <TextField fx:id="nameField" layoutX="64.0" layoutY="17.0" />
+                        <Label layoutX="232.0" layoutY="21.0" text="Phone Number: " />
+                        <TextField fx:id="phoneField" layoutX="319.0" layoutY="17.0" />
+                        <Button fx:id="deleteMember" layoutX="572.0" layoutY="17.0" mnemonicParsing="false" onAction="#deleteMember" prefHeight="25.0" prefWidth="53.0" text="Delete" />
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
-                     </children>
+         </children>
                   </AnchorPane>
                </children>
             </VBox>
