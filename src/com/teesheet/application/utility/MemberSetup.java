@@ -41,7 +41,7 @@ public class MemberSetup {
 		DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn =  connectDB.getConnection();
         int count = 0;
-        String countQuery = "select count(*) from classproject.memberInfo";
+        String countQuery = "select MAX(memberID) from classproject.memberInfo";
         try {
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(countQuery);
