@@ -41,9 +41,14 @@ public class MembersController {
 	@FXML
 	TextField phoneField;
 	
-	public void deleteMember(ActionEvent e) {
+	public void deleteMember(ActionEvent e) throws SQLException {
 		
-		System.out.println(members.getSelectionModel().getSelectedItem());
+		Member selected = members.getSelectionModel().getSelectedItem();
+		
+		if (selected != null) {
+			MemberSetup.removeMember(selected.getMemberID());
+			loadMembers();
+		}
 		
 	}
 	

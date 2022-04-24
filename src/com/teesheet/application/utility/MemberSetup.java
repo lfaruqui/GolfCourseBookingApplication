@@ -57,7 +57,7 @@ public class MemberSetup {
 		DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn =  connectDB.getConnection();
         int count = 0;
-        String countQuery = "select count(*) from classproject.memberInfo";
+        String countQuery = "select MAX(memberID) from classproject.memberInfo";
         try {
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(countQuery);
@@ -80,6 +80,25 @@ public class MemberSetup {
             e.printStackTrace();
         }
 	}
+	
+	
+	public static void removeMember(String id) throws SQLException{
+        DatabaseConnection connectDB = new DatabaseConnection();
+        Connection cn =  connectDB.getConnection();
+
+        PreparedStatement post = cn.prepareStatement("DELETE from classproject.memberinfo WHERE " +
+                "memberID = (?)");
+        post.setString(1,id);
+        try{
+            post.executeUpdate();
+
+        }
+        catch(Exception e){
+        }
+
+
+    }
+	
     public static void createMemberTable(String adminUsername, String adminPassword){
         DatabaseConnection connectDB = new DatabaseConnection();
         Connection cn =  connectDB.getConnection();
