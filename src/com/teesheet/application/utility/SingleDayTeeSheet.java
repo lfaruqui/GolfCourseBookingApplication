@@ -12,6 +12,10 @@ public class SingleDayTeeSheet {
         this.date = date;
         info = new ArrayList<SingleTeeTime>();
     }
+    
+    public SingleDayTeeSheet() {
+    	
+    }
 
 
 	public String getDate() {

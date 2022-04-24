@@ -3,21 +3,41 @@
     -fx-background-color: WHITE;
     -fx-border-width: 2;
     -fx-border-color: rgba(0, 60, 136, 0.8);
-    -fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: WHITE;
+    -fx-pref-height: 60;
+    
 }
 
-.accordion .title > .arrow-button
+.titled-pane .title > .arrow-button
 {
     visibility: hidden;
 }
 
-.accordion .title
+#time
 {
-    -fx-pref-height: 60;
+	-fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #235675;
 }
+
+.label
+{
+	-fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #235675;
+}
+
+.text-field
+{
+	-fx-font-size: 12px;
+}
+
+.button
+{
+	-fx-font-size: 10px;
+}
+
 
 /*.pane
 {
@@ -25,8 +45,3 @@
 	-fx-pref-width: 100%;
 	-fx-background-color: #000000;
 }*/
-
-#timesPane
-{
-	-fx-pref-height: 2450;
-}

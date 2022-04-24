@@ -2,7 +2,6 @@ package com.teesheet.application.gui;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +22,6 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 /**
  * @author Jayden Craft Mar 31, 2022
@@ -42,7 +40,15 @@ public class DashboardController {
 
 	private JSONObject teesheet;
 
-	private HashMap<TitledPane, ExpandedReservationController> controllers;
+	public JSONObject getTeeSheet() {
+		return teesheet;
+	}
+
+	public Accordion getHours() {
+		return hours;
+	}
+
+	private HashMap<TitledPane, TeeTimePaneController> controllers;
 
 	public void switchDay(MouseEvent e) {
 
@@ -79,6 +85,8 @@ public class DashboardController {
 
 		for (TitledPane t : hours.getPanes()) {
 			loadTeeSheet(t, index);
+			
+			controllers.get(t).setTeeTimeDate(this.date);
 
 			index++;
 		}
@@ -87,25 +95,13 @@ public class DashboardController {
 
 	}
 
-	private void loadTeeSheet(TitledPane t, int index) {
-
-		// Get the label in the title of the TitlePane
-		Label label = (Label) t.getGraphic();
-
+	public void loadTeeSheet(TitledPane t, int index) {
 		JSONArray teeTimes = teesheet.optJSONArray("tee_Times");
 //			System.out.println(hours.getChildrenUnmodifiable().indexOf(t));
 		JSONObject singleTeeTime = teeTimes.optJSONObject(index);
 //			System.out.println(s);
-		JSONObject info = singleTeeTime.optJSONObject("info");
-		LocalTime time = LocalTime.parse(singleTeeTime.optString("time"), DateTimeFormatter.ofPattern("HH:mm:ss"));
-		label.setText(time.format(DateTimeFormatter.ofPattern("h:mm a")) + "  Member: " + info.optString("member_name"));
-
-		ExpandedReservationController rc = controllers.get(t);
-
-		rc.setTeeTime(singleTeeTime);
-
-//			label.setText( + "");
-
+		controllers.get(t).loadTeeTime(singleTeeTime);
+		
 	}
 
 	/**
@@ -129,31 +125,48 @@ public class DashboardController {
 			index++;
 		}
 
-		index = 0;
-		LocalTime time = LocalTime.of(7, 0);
+		controllers = new HashMap<TitledPane, TeeTimePaneController>();
 
-		controllers = new HashMap<TitledPane, ExpandedReservationController>();
-
-		for (TitledPane t : hours.getPanes()) {
-
-			// Get the label in the title of the TitlePane
-			Label label = (Label) t.getGraphic();
-
-			label.setText(time.format(DateTimeFormatter.ofPattern("hh:mm a")));
-			time = time.plusMinutes(10);
-
-			FxmlLoader loader = new FxmlLoader("ExpandedReservationPane.fxml");
-			t.setContent(loader.loadPage());
-
-			ExpandedReservationController rc = loader.getLoader().getController();
-
-			controllers.put(t, rc);
-
-			loadTeeSheet(t, index);
-
-			index++;
-		}
-
+		loadHours();
 	}
 
+	private void loadHours() {
+
+		AnchorPane parent = (AnchorPane) hours.getParent();
+
+		for (int i = 0; i < teesheet.optJSONArray("tee_Times").length(); i++) {
+//			System.out.println(i);
+			TitledPane t = createTitledPane();
+			hours.getPanes().add(t);
+
+			parent.setPrefHeight(parent.getPrefHeight() + 60);
+
+			loadTeeSheet(t, i);
+		}
+
+		parent.setPrefHeight(parent.getPrefHeight() + 275);
+	}
+
+	private TitledPane createTitledPane() {
+		FxmlLoader loader = new FxmlLoader("TitledPane.fxml");
+
+		AnchorPane n = (AnchorPane) loader.loadPage();
+		
+//		System.out.println(n);
+
+		TitledPane t = (TitledPane) n.getChildren().get(0);
+		
+		TeeTimePaneController tc = loader.getLoader().getController();
+
+		// We want to access the inner-pane with all of the information fields so we can
+		// write to the fields
+		// This should be handled by the ExpandedReservationController, not this
+		// controller, so we keep trak of it
+		controllers.put(t, tc);
+//		System.out.println(controllers);
+		
+		tc.setTeeTimeDate(date);
+
+		return t;
+	}
 }

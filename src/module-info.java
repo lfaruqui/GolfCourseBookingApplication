@@ -1,5 +1,4 @@
 module Test {
-	
 	requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
@@ -23,5 +22,4 @@ module Test {
     
     exports com.teesheet.application to javafx.graphics;
     exports com.teesheet.testing to javafx.graphics, javafx.fxml;
-    
 }

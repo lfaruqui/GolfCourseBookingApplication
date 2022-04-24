@@ -39,7 +39,7 @@
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding></Label>
-                              <Label prefHeight="56.0" prefWidth="185.0" styleClass="navigation" text="Bookings" GridPane.rowIndex="1">
+                              <Label prefHeight="56.0" prefWidth="185.0" styleClass="navigation" text="Blocking" GridPane.rowIndex="1">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>

@@ -16,6 +16,10 @@ public class SingleTeeTime {
 				player2_name, p2_cart, p2_reference, player3_name, p3_cart, p3_reference, player4_name, p4_cart,
 				p4_reference, caddie, creator);
 	}
+	
+	public SingleTeeTime() {
+		
+	}
 
 	public class Info {
 
@@ -193,14 +197,32 @@ public class SingleTeeTime {
 				memPresInt = 1;
 			}
 			
+			nullCheck();
 			
 			return  "blocked=\"" + blockedInt +  "\" ,Member_Name=\"" + member_name + "\",mem_present=\"" + memPresInt + "\",mem_cart=\"" + mem_cart + "\"," +
-	                "Player1_Name=\"" + player1_name + "\", p1_cart=\"" + p1_cart + "\",p1_reference=\"" + p1_reference + "\"," +
+	                "Player1_Name=\"" + player1_name + "\", p1_cart=" + p1_cart + ",p1_reference=\"" + p1_reference + "\"," +
 	                "Player2_Name=\"" + player2_name + "\", p2_cart=\"" + p2_cart + "\",p2_reference=\"" + p2_reference + "\","+
 	                "Player3_Name=\"" + player3_name + "\", p3_cart=\"" + p3_cart + "\",p3_reference=\"" + p3_reference + "\","+
 	                "Player4_Name=\"" + player4_name + "\", p4_cart=\"" + p4_cart + "\",p4_reference=\"" + p4_reference + "\","+
 	                "Caddie=\"" + caddie + "\",Creator=\"" + creator + "\" WHERE clock=\"" + time + "\"";
 		}
+		
+		public void nullCheck() {
+			
+			String q = "\"";
+			
+			if (p1_cart.equals("nu")) {
+				p1_cart = "NULL";
+			}else {
+				q.concat(p1_cart).concat(q);
+			}
+		}
+		
+		public Info() {
+			
+		}
+		
+		
 
 
 		public Info(boolean blocked, String member_name, boolean mem_present, String mem_cart, String player1_name,
