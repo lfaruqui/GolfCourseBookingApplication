@@ -1,0 +1,14 @@
+#title
+{	
+	-fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill:  #235675;
+	
+}
+
+.panes
+{
+	-fx-border-width: 0 0 2 0;
+	-fx-border-color: #235675;
+}

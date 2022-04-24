@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="1800.0" spacing="14.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.EmptyTeeTimeTitleController">
+   <children>
+      <Label id="time" text="Time" HBox.hgrow="NEVER">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Label>
+      <Label text="Member:" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets top="7.0" />
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="member" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+      <Label text="Player 1:" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets top="7.0" />
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="player1" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+      <Label text="Player 2:" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets top="7.0" />
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="player2" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+      <Button fx:id="reserve" mnemonicParsing="false" onAction="#makeReservation" text="Reserve" HBox.hgrow="ALWAYS" />
+   </children>
+</HBox>

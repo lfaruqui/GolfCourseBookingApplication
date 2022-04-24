@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.TeeTimePaneController">
+   <children>
+      <TitledPane fx:id="pane" contentDisplay="GRAPHIC_ONLY" prefHeight="383.0" prefWidth="383.0" stylesheets="@css/titledpane.css">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+         <graphic>
+            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="1800.0" spacing="14.0">
+               <children>
+                  <Label id="time" text="Time" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Member:" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Player 1:" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Player 2:" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" text="Reserve" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </graphic>
+      </TitledPane>
+   </children>
+</AnchorPane>
