@@ -2,6 +2,10 @@ package com.teesheet.application.utility;
 
 import java.util.ArrayList;
 
+/**
+ * Holds all the members' info in the database
+ */
+
 public class MemberList {
 	private ArrayList<Member> members;
 	

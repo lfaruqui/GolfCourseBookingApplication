@@ -2,6 +2,9 @@ package com.teesheet.application.utility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Creates the connection to the database
+ */
 public class DatabaseConnection {
     public Connection databaseLink;
 
