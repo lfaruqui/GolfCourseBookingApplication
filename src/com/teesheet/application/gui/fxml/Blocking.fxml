@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="543.0" prefWidth="737.0" stylesheets="@css/blocking.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.BlockingController">
+<VBox prefHeight="543.0" prefWidth="737.0" stylesheets="@css/blocking.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teesheet.application.gui.BlockingController">
                <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="2000.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="2000.0" style="-fx-background-color: white;">
          <children>
-            <Label id="title" layoutX="93.0" layoutY="46.0" text="Block Dates" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label id="title" layoutX="93.0" layoutY="46.0" style="-fx-background-color: white;" text="Block Dates" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
                   <Pane minHeight="25.0" prefHeight="25.0" prefWidth="721.0" style="-fx-background-color: #235675;" VBox.vgrow="NEVER" />
@@ -23,7 +25,7 @@
                      <children>
             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="panes" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -52,11 +54,11 @@
                            </children>
                         </VBox>
                      </children></AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="panes" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
                                  <children>
                                     <Label layoutX="37.0" layoutY="11.0" text="Block a Single Day">
                                        <font>
@@ -80,7 +82,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="panes" VBox.vgrow="ALWAYS">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="panes" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -114,7 +116,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane minHeight="36.0" prefHeight="46.0" prefWidth="737.0" VBox.vgrow="NEVER">
+                  <AnchorPane minHeight="36.0" prefHeight="46.0" prefWidth="737.0" style="-fx-background-color: white;" VBox.vgrow="NEVER">
                      <children>
                         <Label layoutX="132.0" layoutY="4.0" text="Notice that blocking already blocked dates will unblock them" textFill="#225573">
                            <font>
